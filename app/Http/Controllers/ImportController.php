@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CsvData;
-use App\Models\Contact;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 use App\Imports\ContactsImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -42,20 +42,22 @@ class ImportController extends Controller
 
     public function processImport(Request $request)
     {
+        \Log::info('Request Fields:', $request->fields);
+        \Log::info('Config DB Fields:', config('app.db_fields'));
         $data = CsvData::find($request->csv_data_file_id);
         $csv_data = json_decode($data->csv_data, true);
         foreach ($csv_data as $row) {
-            $contact = new Contact();
+            $medicines = new Medicine();
             foreach (config('app.db_fields') as $index => $field) {
                 if ($data->csv_header) {
-                    $contact->$field = $row[$request->fields[$field]];
+                    $medicines->$field = $row[$request->fields[$field]];
                 } else {
-                    $contact->$field = $row[$request->fields[$index]];
+                    $medicines->$field = $row[$request->fields[$index]];
                 }
             }
-            $contact->save();
+            $medicines->save();
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Import finished.');
+        return redirect()->route('medicines.index')->with('success', 'Import finished.');
     }
 }

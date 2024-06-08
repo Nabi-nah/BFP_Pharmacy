@@ -14,53 +14,33 @@
 
                     <x-validation-errors class="mb-4" :errors="$errors"/>
 
-                    <form action="{{ route('import_parse') }}" method="POST" class="mb-4" enctype="multipart/form-data">
-                        @csrf
-
-                        <div>
-                            <x-label for="csv_file" :value="__('CSV file to import')"/>
-
-                            <x-input id="csv_file" class="block mt-1 w-full" type="file" name="csv_file" required/>
-                        </div>
-
-                        <div class="mt-4 flex items-center">
-                            <x-label for="header" :value="__('File contains header row?')"/>
-
-                            <x-input id="header" class="ml-1" type="checkbox" name="header" checked/>
-                        </div>
-
-                        <x-button class="mt-4">
-                            {{ __('Submit') }}
-                        </x-button>
-                    </form>
-
                     <div class="overflow-hidden overflow-x-auto min-w-full align-middle sm:rounded-md">
                         <table class="min-w-full divide-y divide-gray-200 border">
                             <thead>
                             <tr>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">First nameVIEW-INDEX</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Medicine Name</span>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Last name</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Quantity</span>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Prescription Date</span>
                                 </th>
                             </tr>
                             </thead>
 
                             <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                            @foreach($contacts as $contact)
+                            @foreach($qty as $qty)
                                 <tr class="bg-white">
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $contact->first_name }}
+                                        {{ $qty->lower_medicinename }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $contact->last_name }}
+                                        {{ $qty->total_quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $contact->email }}
+                                        {{ $qty->prescriptionDate }}
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,7 +48,7 @@
                         </table>
                     </div>
 
-                    {{ $contacts->links() }}
+                    
 
                 </div>
             </div>

@@ -11,10 +11,13 @@ class CreateAccountsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->string('email')->unique();
+            $table->integer('account_edited');
+            $table->string('password');
             $table->timestamps();
         });
     }

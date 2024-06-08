@@ -4,82 +4,47 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Models\Medicine;
+
+use Carbon\Carbon;
+use Hash;
+use Session;
+use DB;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+   /**
+     * Login Function START
      */
-    public function index()
+    public function login()
     {
-        //
+        $medicine = Medicine::all();
+        $currentMonth = Carbon::now()->month;
+        //TOTAL BY MONTH
+        $qty = Medicine::select(DB::raw('LOWER("medicineName") as lower_medicineName'), DB::raw('SUM(quantity) as total_quantity'), 'prescriptionDate')
+        //->where(DB::raw('LOWER("medicineName")'), 'antibiotics')
+        ->whereMonth('prescriptionDate', '=', $currentMonth) // Filter by current month
+        ->groupBy(DB::raw('LOWER("medicineName")'), 'prescriptionDate')
+        ->get();
+
+        return view('accounts.login-account', compact('medicine', 'qty'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function loginAccount(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' =>'required|min:6',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $account = Account::where('email', '=', $request -> email)-> first();
+        if($account){
+            if(Hash::check($request->password, $account->password)){
+                $request-> session() ->put('loginId', $account -> id);
+                return view('/welcome'); 
+            }
+        }
     }
-
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
+     * Login Function END ------------NOTE CHANGE VIEW('/homepage')
      */
-    public function show(Account $account)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Account $account)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Account $account)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Account $account)
-    {
-        //
-    }
 }

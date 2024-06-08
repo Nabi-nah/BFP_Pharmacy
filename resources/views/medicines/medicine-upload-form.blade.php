@@ -39,28 +39,46 @@
                             <thead>
                             <tr>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">First nameVIEW-INDEX</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Medicine Name</span>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Last name</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Quantity</span>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Name</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Type</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Prescription Date</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Physician Name</span>
                                 </th>
                             </tr>
                             </thead>
 
                             <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                            @foreach($contacts as $contact)
+                            @foreach($medicines as $medicine)
                                 <tr class="bg-white">
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $contact->first_name }}
+                                        {{ $medicine->medicineName }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $contact->last_name }}
+                                        {{ $medicine->quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $contact->email }}
+                                        {{ $medicine->patientName }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $medicine->patientType }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $medicine->prescriptionDate }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $medicine->physicianName }}
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,7 +86,7 @@
                         </table>
                     </div>
 
-                    {{ $contacts->links() }}
+                    
 
                 </div>
             </div>

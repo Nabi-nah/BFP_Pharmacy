@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+use Hash;
+use Session;
+use DB;
+
 class MedicineController extends Controller
 {
     /**
@@ -14,7 +19,11 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        //
+        $medicines = Medicine::paginate();
+        //$medicines = Medicine::paginate();
+
+        return view('medicines.medicine-upload-form', compact('medicines'));
+        //return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -81,5 +90,19 @@ class MedicineController extends Controller
     public function destroy(Medicine $medicine)
     {
         //
+    }
+
+    public function monthly_medicine()
+    {
+        $medicine = Medicine::all();
+        $currentMonth = Carbon::now()->month;
+        //TOTAL BY MONTH
+        $qty = Medicine::select(DB::raw('LOWER("medicineName") as lower_medicineName'), DB::raw('SUM(quantity) as total_quantity'), 'prescriptionDate')
+        //->where(DB::raw('LOWER("medicineName")'), 'antibiotics')
+        ->whereMonth('prescriptionDate', '=', $currentMonth) // Filter by current month
+        ->groupBy(DB::raw('LOWER("medicineName")'), 'prescriptionDate')
+        ->get();
+
+        return view('medicines.medicine-monthly', compact('medicine', 'qty'));
     }
 }
