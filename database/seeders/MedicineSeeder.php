@@ -52,7 +52,7 @@ class MedicineSeeder extends Seeder
             ],
             [
                 'id' => '4',
-                'medicine_name' => 'lonzenges',
+                'medicine_name' => 'lozenges',
                 'quantity' => 8,
                 'patient_name' => 'Kobe',
                 'patient_type' => 'Non-UniformedPersonnel',

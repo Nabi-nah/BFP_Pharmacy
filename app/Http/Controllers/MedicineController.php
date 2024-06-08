@@ -22,7 +22,7 @@ class MedicineController extends Controller
         $medicines = Medicine::paginate();
         //$medicines = Medicine::paginate();
 
-        return view('medicines.medicine-upload-form', compact('medicines'));
+        return redirect('medicines.medicine-upload-form', compact('medicines'));
         //return view('contacts.index', compact('contacts'));
     }
 

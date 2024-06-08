@@ -17,19 +17,28 @@ use App\Http\Controllers\ImportController;
 |
 */
 Route::get('/', function () {return view('welcome');});
-Route::get('/index', [ContactController::class, 'index'])->name('contacts.index'); //important
+Route::get('/index', [ContactController::class, 'index'])->name('contacts.index'); 
 
+//Route::get('/bfp', function () {return view('home');});
+/* Not ours
 Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
+*/
+Route::get('/BFP', [AccountController::class, 'publicLogin'])-> name('bfp');
+Route::get('/BFP/AboutUs', [AccountController::class, 'aboutUs'])-> name('about');
 
 
 Route::get('/logins', [AccountController::class, 'login'])-> name('logins');
 Route::post('/account-login', [AccountController::class, 'loginAccount']) -> name('account-login');
+Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+Route::get('/edit-profile', [AccountController::class, 'edit_profile'])->name('edit-profile');
 
-Route::post('/import_parse', [ImportController::class, 'parseImport'])->name('import_parse');//important
-Route::post('/import_process', [ImportController::class, 'processImport'])->name('import_process');//important
+Route::get('logouts',[AccountController::class, 'logout'])->name('logout');
+
+Route::post('/import_parse', [ImportController::class, 'parseImport'])->name('import_parse');
+Route::post('/import_process', [ImportController::class, 'processImport'])->name('import_process');
 
 Route::get('/monthly-medicines', [MedicineController::class, 'monthly_medicine'])-> name('medicines.monthly-medicines');
 

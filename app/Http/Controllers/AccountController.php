@@ -13,6 +13,12 @@ use DB;
 
 class AccountController extends Controller
 {
+    public function publicLogin(){
+        return view('home');
+    }
+    public function aboutUs(){
+        return view('about');
+    }
    /**
      * Login Function START
      */
@@ -33,11 +39,37 @@ class AccountController extends Controller
         if($account){
             if(Hash::check($request->password, $account->password)){
                 $request-> session() ->put('loginId', $account -> id);
-                return view('/welcome'); 
+                //dd(Session::get('loginId'));
+                return redirect('/'); 
             }
         }
     }
     /**
      * Login Function END ------------NOTE CHANGE VIEW('/homepage')
      */
+
+    public function profile(){
+        if(Session::has('loginId')){
+            //dd(Session::get('loginId'));
+            $account = Account::where('id', '=',Session::get('loginId'))->first();
+            return view('accounts.profile',compact('account'));
+        }
+    }
+
+    public function edit_profile(){
+        if(Session::has('loginId')){
+            //dd(Session::get('loginId'));
+            $account = Account::where('id', '=',Session::get('loginId'))->first();
+            return view('accounts.profile-edit',compact('account'));
+        }
+    }
+
+    public function logout(){
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            //dd(Session::get('loginId'));
+            return redirect('logins');
+        }
+        return redirect('logins');
+    }
 }

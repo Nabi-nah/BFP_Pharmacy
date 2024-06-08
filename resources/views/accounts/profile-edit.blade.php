@@ -193,6 +193,9 @@
         #bfpName{
             text-align: left;
         }
+        #email{
+            text-align: left;
+        }
     </style>
     <title>BFP</title>
 </head>
@@ -200,18 +203,18 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-in">
-            <form action="{{route('account-login')}}" method="post">
+            <form action="" method="post">
                 @csrf
-                <h1>Sign In</h1>
+                <h1>Editing Account</h1>
                 <br>
-                <span>Sign In to Start your Session</span>
                 <br>
-                <input type="email" name="email" placeholder="Enter Email">
+                <label id = "email">Email</label>
+                <input type="email" name="email" placeholder="{{$account->email}}" disabled>
                 <input type="password" name="password" placeholder=" Enter Password">
                 <!-- <a href="#">Forget Password?</a> -->
-                <button type="submit">Sign In</button>
+                <button type="submit">Save Changes</button>
                 <p id="qs"></p>
-                <p id="clickhere">Click <a href="{{url('BFP')}}">here</a> to view as public.</p>
+                <p id="clickhere">Email and Password can only be changed once.</p>
 
             </form>
         </div>
