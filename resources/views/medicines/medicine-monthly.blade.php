@@ -40,7 +40,7 @@
                                         {{ $qty->total_quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $qty->prescriptionDate }}
+                                        {{ $qty->prescription_date }}
                                     </td>
                                 </tr>
                             @endforeach

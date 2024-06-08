@@ -18,16 +18,9 @@ class AccountController extends Controller
      */
     public function login()
     {
-        $medicine = Medicine::all();
         $currentMonth = Carbon::now()->month;
         //TOTAL BY MONTH
-        $qty = Medicine::select(DB::raw('LOWER("medicineName") as lower_medicineName'), DB::raw('SUM(quantity) as total_quantity'), 'prescriptionDate')
-        //->where(DB::raw('LOWER("medicineName")'), 'antibiotics')
-        ->whereMonth('prescriptionDate', '=', $currentMonth) // Filter by current month
-        ->groupBy(DB::raw('LOWER("medicineName")'), 'prescriptionDate')
-        ->get();
-
-        return view('accounts.login-account', compact('medicine', 'qty'));
+        return view('accounts.login-account');
     }
 
     public function loginAccount(Request $request){

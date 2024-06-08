@@ -97,10 +97,10 @@ class MedicineController extends Controller
         $medicine = Medicine::all();
         $currentMonth = Carbon::now()->month;
         //TOTAL BY MONTH
-        $qty = Medicine::select(DB::raw('LOWER("medicineName") as lower_medicineName'), DB::raw('SUM(quantity) as total_quantity'), 'prescriptionDate')
+        $qty = Medicine::select(DB::raw('LOWER("medicine_name") as lower_medicineName'), DB::raw('SUM(quantity) as total_quantity'), 'prescription_date')
         //->where(DB::raw('LOWER("medicineName")'), 'antibiotics')
-        ->whereMonth('prescriptionDate', '=', $currentMonth) // Filter by current month
-        ->groupBy(DB::raw('LOWER("medicineName")'), 'prescriptionDate')
+        ->whereMonth('prescription_date', '=', $currentMonth) // Filter by current month
+        ->groupBy(DB::raw('LOWER("medicine_name")'), 'prescription_date')
         ->get();
 
         return view('medicines.medicine-monthly', compact('medicine', 'qty'));

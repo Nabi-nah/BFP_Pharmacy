@@ -232,11 +232,11 @@ return [
     ],
 
     'db_fields' => [
-        'medicineName',
+        'medicine_name',
         'quantity',
-        'patientName',
-        'patientType',
-        'prescriptionDate',
-        'physicianName'
+        'patient_name',
+        'patient_type',
+        'prescription_date',
+        'physician_name'
     ]
 ];

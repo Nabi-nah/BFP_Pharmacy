@@ -63,22 +63,22 @@
                             @foreach($medicines as $medicine)
                                 <tr class="bg-white">
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $medicine->medicineName }}
+                                        {{ $medicine->medicine_name }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                         {{ $medicine->quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $medicine->patientName }}
+                                        {{ $medicine->patient_name }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $medicine->patientType }}
+                                        {{ $medicine->patient_type }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $medicine->prescriptionDate }}
+                                        {{ $medicine->prescription_date }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $medicine->physicianName }}
+                                        {{ $medicine->physician_name }}
                                     </td>
                                 </tr>
                             @endforeach
