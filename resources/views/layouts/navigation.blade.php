@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="position:fixed;width: 100%;">
     <!-- Primary Navigation Menu -->
     <div style = "background-color: #92141A; background-image: url('headerbg.png'); background-repeat: no-repeat; background-blend-mode: multiply; background-size:100%; width:100% ">
     <!--x-header-background-->
@@ -7,13 +7,12 @@
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <!-- Logo -->
+                        <x-nav-link :href="route('bfp')" :active="request()->routeIs('bfp')"  style="color:white;">
                         <div class="flex flex-shrink-0 items-center">
-                            <a href="/BFP">
-                                <x-application-logo class="block w-auto h-10 text-gray-600 " />
-                            </a>
+                            <x-application-logo class="block w-auto h-10 text-gray-600 " />
                             <p style="color:white; padding-left: 5px;">Bureau of <br>Fire Protection</p>
                         </div>
-
+                        </x-nav-link>
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <x-nav-link :href="route('medicines.monthly-medicines')" :active="request()->routeIs('medicines.monthly-medicines')"  style="color:white;">

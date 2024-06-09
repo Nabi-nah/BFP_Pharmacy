@@ -17,6 +17,9 @@ class ImportController extends Controller
 {
     public function parseImport(CsvImportRequest $request)
     {
+        $file = $request->file('csv_file');
+        $extension = $file->getClientOriginalExtension();
+        
         if ($request->has('header')) {
             $headings = (new HeadingRowImport)->toArray($request->file('csv_file'));
             $data = Excel::toArray(new ContactsImport, $request->file('csv_file'))[0];
@@ -26,21 +29,22 @@ class ImportController extends Controller
 
         if (count($data) > 0) {
             $csv_data = array_slice($data, 0, 2);
-            foreach ($data as $i => $datum) {
-                // Assuming $datum['prescription_date'] is a string representation of a date
-                $prescription_date = new DateTime('@'.(($datum['prescription_date']- 25569) * 86400)); // Convert string to DateTime object
-                $formatted_date = $prescription_date->format('Y-m-d H:i:s'); // Format DateTime object to get date in 'Y-m-d H:i:s' format
-                $data[$i]['prescription_date'] = $formatted_date;
+            if (in_array($extension, ['xls', 'xlsx'])) {
+                foreach ($data as $i => $datum) {
+                    // Assuming $datum['prescription_date'] is a string representation of a date
+                    $prescription_date = new DateTime('@'.(($datum['prescription_date']- 25569) * 86400)); // Convert string to DateTime object
+                    $formatted_date = $prescription_date->format('Y-m-d H:i:s'); // Format DateTime object to get date in 'Y-m-d H:i:s' format
+                    $data[$i]['prescription_date'] = $formatted_date;
+                }
+                foreach ($csv_data as $i => $datum) {
+                    // Assuming $datum['prescription_date'] is a string representation of a date
+                    $prescription_date = new DateTime('@'.(($datum['prescription_date']- 25569) * 86400)); // Convert string to DateTime object
+                    $formatted_date = $prescription_date->format('Y-m-d H:i:s'); // Format DateTime object to get date in 'Y-m-d H:i:s' format
+                    $csv_data[$i]['prescription_date'] = $formatted_date;
+                }
+                //dd($data);
+                //dd($csv_data);
             }
-            foreach ($csv_data as $i => $datum) {
-                // Assuming $datum['prescription_date'] is a string representation of a date
-                $prescription_date = new DateTime('@'.(($datum['prescription_date']- 25569) * 86400)); // Convert string to DateTime object
-                $formatted_date = $prescription_date->format('Y-m-d H:i:s'); // Format DateTime object to get date in 'Y-m-d H:i:s' format
-                $csv_data[$i]['prescription_date'] = $formatted_date;
-            }
-            //dd($data);
-            //dd($csv_data);
-            
             $csv_data_file = CsvData::create([
                 'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
                 'csv_header' => $request->has('header'),
