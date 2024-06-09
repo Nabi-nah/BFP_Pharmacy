@@ -41,6 +41,12 @@ Route::post('/import_parse', [ImportController::class, 'parseImport'])->name('im
 Route::post('/import_process', [ImportController::class, 'processImport'])->name('import_process');
 
 Route::get('/monthly-medicines', [MedicineController::class, 'monthly_medicine'])-> name('medicines.monthly-medicines');
+Route::get('/monthly-medicines-uniformed', [MedicineController::class, 'monthly_medicine_uniformed'])-> name('medicines.monthly-medicines-uniformed');
+Route::get('/monthly-medicines-nonuniformed', [MedicineController::class, 'monthly_medicine_nonuniformed'])-> name('medicines.monthly-medicines-nonuniformed');
+Route::get('/monthly-medicines-civilian', [MedicineController::class, 'monthly_medicine_civilian'])-> name('medicines.monthly-medicines-civilian');
+Route::get('/monthly-medicines-dependent', [MedicineController::class, 'monthly_medicine_dependent'])-> name('medicines.monthly-medicines-dependent');
+Route::get('/monthly-medicines-retired', [MedicineController::class, 'monthly_medicine_retired'])-> name('medicines.monthly-medicines-retired');
 
 Route::get('/upload-medicines', [MedicineController::class, 'index'])-> name('medicines.upload-medicines');
+Route::get('/database-medicines', [MedicineController::class, 'database'])-> name('medicines.monthly-database');
 require __DIR__.'/auth.php';

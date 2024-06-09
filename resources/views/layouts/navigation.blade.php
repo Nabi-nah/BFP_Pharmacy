@@ -16,8 +16,8 @@
 
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')"  style="color:white;">
-                                {{ __('Contacts') }} Import 
+                            <x-nav-link :href="route('medicines.monthly-medicines')" :active="request()->routeIs('medicines.monthly-medicines')"  style="color:white;">
+                                {{ __('Monthly Medicine') }} 
                             </x-nav-link>
                         </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -64,7 +64,7 @@
                             </x-slot>
                         </x-dropdown>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline dark:text-gray-500 "  style="color:white;">Log in</a>
+                            <a href="{{ route('logins') }}" class="text-sm text-gray-700 underline dark:text-gray-500 "  style="color:white;">Log in</a>
 
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500"  style="color:white;">Register</a>

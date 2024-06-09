@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Contacts') }}VIEW-INDEX
+            {{ __('Contacts') }}
         </h2>
     </x-slot>
 
@@ -25,22 +25,40 @@
                                     <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Quantity</span>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Name</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Type</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
                                     <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Prescription Date</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Physician Name</span>
                                 </th>
                             </tr>
                             </thead>
 
                             <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                            @foreach($qty as $qty)
+                            @foreach($medicines as $medicine)
                                 <tr class="bg-white">
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $qty->lower_medicinename }}
+                                        {{ $medicine->medicine_name }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $qty->total_quantity }}
+                                        {{ $medicine->quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ DateTime::createFromFormat('!m', $qty->prescription_month )->format('F') }}
+                                        {{ $medicine->patient_name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $medicine->patient_type }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $medicine->prescription_date }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $medicine->physician_name }}
                                     </td>
                                 </tr>
                             @endforeach
@@ -48,7 +66,7 @@
                         </table>
                     </div>
 
-                    
+                    {{ $medicines->links() }}
 
                 </div>
             </div>

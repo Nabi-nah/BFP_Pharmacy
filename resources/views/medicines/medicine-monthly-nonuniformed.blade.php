@@ -25,22 +25,28 @@
                                     <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Quantity</span>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Prescription Date</span>
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Type</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Prescription Month</span>
                                 </th>
                             </tr>
                             </thead>
 
                             <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                            @foreach($qty as $qty)
+                            @foreach($nonuniformed as $nonuniformed)
                                 <tr class="bg-white">
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $qty->lower_medicinename }}
+                                        {{ $nonuniformed->lower_medicinename }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ $qty->total_quantity }}
+                                        {{ $nonuniformed->total_quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                                        {{ DateTime::createFromFormat('!m', $qty->prescription_month )->format('F') }}
+                                        {{ $nonuniformed->patient_type }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ DateTime::createFromFormat('!m', $nonuniformed->prescription_month )->format('F')}}
                                     </td>
                                 </tr>
                             @endforeach

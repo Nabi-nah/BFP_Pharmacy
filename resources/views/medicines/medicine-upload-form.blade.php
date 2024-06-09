@@ -87,7 +87,7 @@
                     </div>
 
                     
-
+                    {{ $medicines->links() }}
                 </div>
             </div>
         </div>
