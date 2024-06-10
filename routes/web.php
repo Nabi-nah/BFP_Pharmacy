@@ -16,8 +16,8 @@ use App\Http\Controllers\ImportController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {return view('welcome');});
-Route::get('/index', [ContactController::class, 'index'])->name('contacts.index'); 
+//Route::get('/', function () {return view('welcome');});
+//Route::get('/index', [ContactController::class, 'index'])->name('contacts.index'); 
 
 //Route::get('/bfp', function () {return view('home');});
 /* Not ours
@@ -30,7 +30,7 @@ Route::get('/BFP', [AccountController::class, 'publicLogin'])-> name('bfp');
 Route::get('/BFP/AboutUs', [AccountController::class, 'aboutUs'])-> name('about');
 
 
-Route::get('/logins', [AccountController::class, 'login'])-> name('logins');
+Route::get('/', [AccountController::class, 'login'])-> name('logins');
 Route::post('/account-login', [AccountController::class, 'loginAccount']) -> name('account-login');
 Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
 Route::get('/edit-profile', [AccountController::class, 'edit_profile'])->name('edit-profile');

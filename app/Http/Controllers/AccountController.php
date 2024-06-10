@@ -64,6 +64,15 @@ class AccountController extends Controller
         }
     }
 
+    public function update_profile(Request $request, string $id){
+        $data = array();
+        if(Session::has('loginId')){
+            $data = Account::where('id', '=', $staffid)-> first();
+            $email = $request -> email;
+            $password = $request -> password;
+        }
+    }
+
     public function logout(){
         if(Session::has('loginId')){
             Session::pull('loginId');
