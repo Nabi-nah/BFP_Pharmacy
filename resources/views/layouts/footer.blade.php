@@ -7,8 +7,10 @@
             <div class="flex justify-between h-25">
                 <div class="flex">
                     <!-- Logo -->
-                    <div class="flex flex-shrink-0 items-center">
-                        <x-footer-logo class="block w-auto h-10 text-gray-600 " />
+                    <div class="flex items-center">
+                        <!--x-footer-logo class="block w-auto h-10 text-gray-600 " /-->
+                        <img src="rnp.png" alt="rnp" width="50" height="50" style="display: block; margin-left: auto; margin-right: auto;">
+
                         <table>
                             <tr>
                             <td>

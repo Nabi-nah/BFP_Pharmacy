@@ -8,8 +8,9 @@
                     <div class="flex">
                         <!-- Logo -->
                         <x-nav-link :href="route('bfp')" :active="request()->routeIs('bfp')"  style="color:white;">
-                        <div class="flex flex-shrink-0 items-center">
-                            <x-application-logo class="block w-auto h-10 text-gray-600 " />
+                        <div class="flex items-center">
+                            <!--x-application-logo class="block w-auto h-10 text-gray-600 " style ="width:50; height:50"/-->
+                            <img src="bfp.png" alt="bfp" width="50" height="50" style="display: block; margin-left: auto; margin-right: auto;">
                             <p style="color:white; padding-left: 5px;">Bureau of <br>Fire Protection</p>
                         </div>
                         </x-nav-link>
@@ -129,11 +130,7 @@
                 <x-responsive-nav-link :href="route('login')">
                     {{ __('Login') }}
                 </x-responsive-nav-link>
-                @if (Route::has('register'))
-                    <x-responsive-nav-link :href="route('register')">
-                        {{ __('Register') }}
-                    </x-responsive-nav-link>
-                @endif
+                
             </div>
         @endauth
         </div>
