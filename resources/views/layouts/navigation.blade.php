@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="position:fixed; width: 100%;">
     <!-- Primary Navigation Menu -->
-    <div style = "background-color: #92141A; background-image: url('headerbg.png'); background-repeat: no-repeat; background-blend-mode: multiply; background-size:100%; width:100% ">
+    <div style = "background-color: #92141A; background-image: url('headerbg.png'); background-repeat: no-repeat; background-blend-mode: multiply; background-size:100%; width:100% max-height:20%">
     <!--x-header-background-->
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-6 h:10">
             

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style=" position:relative;width: 100%;">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style=" position:relative;width: 100%; max-height:15%;">
     <!-- Primary Navigation Menu -->
     <div style = "background-color: #796D67;">
     <!--x-header-background-->
