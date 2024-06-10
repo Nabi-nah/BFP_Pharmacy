@@ -1,12 +1,25 @@
+<link rel="icon" href="{{ asset('bfp.png') }}" type="image/png">
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+       
+
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>BFP</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="{{ asset('bfp.png') }}" type="image/png">
     <style>
         /* Add your CSS styles here */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
@@ -18,7 +31,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        body {
+        #bod {
             background-color: #F5F3F5;
             display: flex;
             align-items: center;
@@ -187,9 +200,12 @@
             margin: 2px 0 0 10px;
         }
         #logo {
-            width: 50%;
-            height: 50%;
-            float: left;
+            width: 60%;
+            height: 40%;
+            min-width: 100px;
+            min-height: 100px;
+            margin-right: 10px;
+            float: right;
         }
         #bfpName{
             text-align: left;
@@ -202,9 +218,11 @@
 </head>
 
 <body>
+@include('layouts.navigation')
+    <div id = "bod">
     <div class="container" id="container">
         <div class="form-container sign-in">
-            <form action="" method="post">
+            <form action="{{url('edit-profile/'.$account->id)}}" method="get">
                 @csrf
                 <h1>Account Details</h1>
                 <br>
@@ -212,7 +230,13 @@
                 <label id = "email">Email</label>
                 <input type="email" name="email" placeholder="{{$account->email}}" disabled>
                 <!-- <a href="#">Forget Password?</a> -->
-                <button type="submit">Edit Email and Password</button>
+                @php
+                    $editProfileUrl = url('edit-profile/'.$account->id);
+                @endphp
+                <x-nav-link :href="$editProfileUrl">
+                <button>Edit Email and Password</button>
+                </x-nav-link>
+                
                 <p id="qs"></p>
                 <p id="clickhere">Email and Password can only be changed once.</p>
 
@@ -226,14 +250,16 @@
                     <button class="hidden" id="login">Sign In</button>
                 </div-->
                 <div class="toggle-panel toggle-right">
-                    <div class = "grid-container">
-                        <div class = "grid-item">
+                    <table class ="left">
+                        <td>
                             <img src="{{ asset('bfp.png') }}" alt="bfp-logo" id = "logo" >
-                        </div>
-                        <div padding = "10px;" class = "grid-item">
-                            <h2 id = "bfpName" >Bureau of <br> Fire  Protection</h2>
-                        </div>
+                        </td>
+                        <td>
+                            <div id = "bfpName" style="font-size:24; font-weight:bold; color:#FAF5F5;">Bureau of <br> Fire Protection</div>
+                        </td>
                     </div>
+                    </table>
+                    
                     
                     <p><br>“Save lives and Properties.”</p>
                     <p float = "bottom">Est. 1991</p>
@@ -242,7 +268,7 @@
             </div>
         </div>
     </div>
-
+    </div>
     <script>
         const container = document.getElementById('container');
         const registerBtn = document.getElementById('register');

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Medicine;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 use Carbon\Carbon;
 use Hash;
@@ -18,6 +21,9 @@ class AccountController extends Controller
     }
     public function aboutUs(){
         return view('about');
+    }
+    public function directory(){
+        return view('directory');
     }
    /**
      * Login Function START
@@ -36,16 +42,21 @@ class AccountController extends Controller
         ]);
 
         $account = Account::where('email', '=', $request -> email)-> first();
+        
         if($account){
             if(Hash::check($request->password, $account->password)){
                 $request-> session() ->put('loginId', $account -> id);
                 //dd(Session::get('loginId'));
-                return redirect('/'); 
+                $user = User::where('email', '=', $request -> email)-> first();
+                auth() -> login($user);
+                //Auth::login($account);
+                return redirect()->route('bfp');
             }
         }
+        return redirect()->route('logins');
     }
     /**
-     * Login Function END ------------NOTE CHANGE VIEW('/homepage')
+     * Login Function END ------------
      */
 
     public function profile(){
@@ -67,18 +78,24 @@ class AccountController extends Controller
     public function update_profile(Request $request, string $id){
         $data = array();
         if(Session::has('loginId')){
-            $data = Account::where('id', '=', $staffid)-> first();
+            $data = Account::where('id', '=', $id)-> first();
             $email = $request -> email;
             $password = $request -> password;
+
+            Account::where('id', '=', $id)->update([
+                'email' => $email,
+                'password' => $password
+            ]);
         }
+        return redirect()->route('profile');
     }
 
     public function logout(){
         if(Session::has('loginId')){
             Session::pull('loginId');
             //dd(Session::get('loginId'));
-            return redirect('logins');
+            return redirect()->route('logins');
         }
-        return redirect('logins');
+        return redirect()->route('logins');
     }
 }

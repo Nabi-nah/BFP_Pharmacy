@@ -1,10 +1,6 @@
 <link rel="icon" href="{{ asset('bfp.png') }}" type="image/png">
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Contacts') }}VIEW-INDEX
-        </h2>
-    </x-slot>
+    
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -54,13 +50,14 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <a href="{{ route('medicines.upload-medicines') }}" class="mt-4"><x-button>{{ __('Import File') }}</x-button></a>
-                    <a href="{{ route('medicines.monthly-medicines-uniformed') }}" class="mt-4"><x-button>{{ __('Uniformed') }}</x-button></a>
-                    <a href="{{ route('medicines.monthly-medicines-nonuniformed') }}" class="mt-4"><x-button>{{ __('Non-Uniformed') }}</x-button></a>
-                    <a href="{{ route('medicines.monthly-medicines-civilian') }}" class="mt-4"><x-button>{{ __('Civilian') }}</x-button></a>
-                    <a href="{{ route('medicines.monthly-medicines-dependent') }}" class="mt-4"><x-button>{{ __('Dependent') }}</x-button></a>
-                    <a href="{{ route('medicines.monthly-medicines-retired') }}" class="mt-4"><x-button>{{ __('Retired') }}</x-button></a>
+                    <div style="margin-top: 10px;">
+                        <a href="{{ route('medicines.upload-medicines') }}" class="mt-4"><x-button>{{ __('Import File') }}</x-button></a>
+                        <a href="{{ route('medicines.monthly-medicines-uniformed') }}" class="mt-4"><x-button>{{ __('Uniformed') }}</x-button></a>
+                        <a href="{{ route('medicines.monthly-medicines-nonuniformed') }}" class="mt-4"><x-button>{{ __('Non-Uniformed') }}</x-button></a>
+                        <a href="{{ route('medicines.monthly-medicines-civilian') }}" class="mt-4"><x-button>{{ __('Civilian') }}</x-button></a>
+                        <a href="{{ route('medicines.monthly-medicines-dependent') }}" class="mt-4"><x-button>{{ __('Dependent') }}</x-button></a>
+                        <a href="{{ route('medicines.monthly-medicines-retired') }}" class="mt-4"><x-button>{{ __('Retired') }}</x-button></a>
+                    </div>
 
                 </div>
             </div>

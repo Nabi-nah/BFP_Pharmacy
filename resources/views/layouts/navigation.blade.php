@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="position:fixed;width: 100%;">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="position:fixed; width: 100%;">
     <!-- Primary Navigation Menu -->
     <div style = "background-color: #92141A; background-image: url('headerbg.png'); background-repeat: no-repeat; background-blend-mode: multiply; background-size:100%; width:100% ">
     <!--x-header-background-->
@@ -14,14 +14,21 @@
                         </div>
                         </x-nav-link>
                         <!-- Navigation Links -->
+                        @auth
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <x-nav-link :href="route('medicines.monthly-medicines')" :active="request()->routeIs('medicines.monthly-medicines')"  style="color:white;">
                                 {{ __('Monthly Medicine') }} 
                             </x-nav-link>
                         </div>
+                        @endauth
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <x-nav-link :href="route('about')" :active="request()->routeIs('about')"  style="color:white;">
                                 {{ __('About Us') }}  
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('directory')" :active="request()->routeIs('directory')"  style="color:white;">
+                                {{ __('BFP Directory') }}  
                             </x-nav-link>
                         </div>
                     </div>
@@ -29,10 +36,10 @@
                     <!-- Settings Dropdown -->
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         @auth
-                        <x-dropdown align="right" width="48">
+                        <x-dropdown text-align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="flex items-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                                    class="flex items-center text-sm font-medium text-500 transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300" style = "color:white;">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ml-1">
@@ -47,7 +54,7 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile.show')">
+                                <x-dropdown-link :href="route('profile')">
                                     {{ __('My profile') }}
                                 </x-dropdown-link>
 
@@ -91,11 +98,11 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        <!--div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                 {{ __('Contacts') }}
             </x-responsive-nav-link>
-        </div>
+        </div-->
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -106,7 +113,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.show')">
+                <x-responsive-nav-link :href="route('profile')">
                     {{ __('My profile') }}
                 </x-responsive-nav-link>
                 <!-- Authentication -->

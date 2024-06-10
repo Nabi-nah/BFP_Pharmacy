@@ -19,12 +19,21 @@
         }
 
         body {
-            background-color: #F5F3F5;
+            background-color: #EFE4E4;
+            background-image: url('headerbg.png'); 
+            background-repeat: no-repeat; 
+            background-blend-mode: overlay; 
+            background-size: 100%; 
+            width: 100%; 
+            
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             height: 100vh;
+        }
+        .bg{
+
         }
 
         .container {
@@ -199,6 +208,7 @@
 </head>
 
 <body>
+    <div class ="bg"></div>
     <div class="container" id="container">
         <div class="form-container sign-in">
             <form action="{{route('account-login')}}" method="post">

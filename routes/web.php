@@ -17,7 +17,7 @@ use App\Http\Controllers\ImportController;
 |
 */
 //Route::get('/', function () {return view('welcome');});
-//Route::get('/index', [ContactController::class, 'index'])->name('contacts.index'); 
+Route::get('/index', [ContactController::class, 'index'])->name('contacts.index'); 
 
 //Route::get('/bfp', function () {return view('home');});
 /* Not ours
@@ -26,16 +26,20 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
 */
-Route::get('/BFP', [AccountController::class, 'publicLogin'])-> name('bfp');
-Route::get('/BFP/AboutUs', [AccountController::class, 'aboutUs'])-> name('about');
+
+Route::get('/BFP', [AccountController::class, 'publicLogin'])-> name('bfp'); 
+Route::get('/BFP-AboutUs', [AccountController::class, 'aboutUs'])-> name('about');
+Route::get('/BFP-Directory', [AccountController::class, 'directory'])-> name('directory');
 
 
-Route::get('/', [AccountController::class, 'login'])-> name('logins');
-Route::post('/account-login', [AccountController::class, 'loginAccount']) -> name('account-login');
+Route::get('/', [AccountController::class, 'login'])-> name('logins') -> middleware('AlreadyLoggedIn');
+Route::post('/account-login', [AccountController::class, 'loginAccount']) -> name('account-login')-> middleware('LoggedIn');
+
 Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
-Route::get('/edit-profile', [AccountController::class, 'edit_profile'])->name('edit-profile');
+Route::get('/edit-profile/{id}', [AccountController::class, 'edit_profile'])->name('edit-profile');
+Route::post('/update-profile/{id}', [AccountController::class, 'update_profile'])->name('update');
 
-Route::get('logouts',[AccountController::class, 'logout'])->name('logout');
+Route::get('logouts',[AccountController::class, 'logout'])->name('logout') -> middleware('isLoggedIn');
 
 Route::post('/import_parse', [ImportController::class, 'parseImport'])->name('import_parse');
 Route::post('/import_process', [ImportController::class, 'processImport'])->name('import_process');

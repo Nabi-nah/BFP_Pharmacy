@@ -168,6 +168,22 @@ class AccountSeeder extends Seeder
                 'updated_at' => date('2024-06-07 14:36:59'),
                 'created_at' => date('2024-06-07 14:36:59'),
             ],
+            [
+                'id' => '19',
+                'email' => 'oysuba@up.edu.ph',
+                'account_edited' => 0,
+                'password' => '$2y$10$hOnYQ1UrdMcDPQtvEUHyQuvKXfKUwPvp.9Dycrc3E473phqkRUoE6',
+                'updated_at' => date('2024-06-07 14:36:59'),
+                'created_at' => date('2024-06-07 14:36:59'),
+            ],
+            [
+                'id' => '20',
+                'email' => 'hdbuizon@up.edu.ph',
+                'account_edited' => 0,
+                'password' => '$2y$10$hOnYQ1UrdMcDPQtvEUHyQuvKXfKUwPvp.9Dycrc3E473phqkRUoE6',
+                'updated_at' => date('2024-06-07 14:36:59'),
+                'created_at' => date('2024-06-07 14:36:59'),
+            ],
             ];
         DB::table('accounts')->insert($accounts);
     }
