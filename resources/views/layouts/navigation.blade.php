@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="position:fixed; width: 100%;">
     <!-- Primary Navigation Menu -->
-    <div style = "background-color: #92141A; background-image: url('headerbg.png'); background-repeat: no-repeat; background-blend-mode: multiply; background-size:100%; width:100% max-height:20%">
+    <div style = "background-color: #92141A; background-image: url('headerbg.png'); background-repeat: no-repeat; background-blend-mode: multiply; background-size:100%; width:100%; height:75">
     <!--x-header-background-->
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-6 h:10">
             
@@ -72,9 +72,7 @@
                         @else
                             <a href="{{ route('logins') }}" class="text-sm text-gray-700 underline dark:text-gray-500 "  style="color:white;">Log in</a>
 
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500"  style="color:white;">Register</a>
-                                @endif
+                                
                         @endauth
                     </div>
 
