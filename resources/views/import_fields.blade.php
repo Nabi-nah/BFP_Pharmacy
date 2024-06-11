@@ -25,7 +25,7 @@
                                     @foreach ($headings[0][0] as $csv_header_field)
                                         {{--                                            @dd($headings)--}}
                                         <th class="px-6 py-3 bg-gray-50">
-                                            <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">hello{{ $csv_header_field }}</span>
+                                            <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">{{ $csv_header_field }}</span>
                                         </th>
                                     @endforeach
                                 </tr>

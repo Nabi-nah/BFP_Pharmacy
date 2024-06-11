@@ -151,7 +151,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 0 30px;
+            padding: 0 40px;
             text-align: center;
             top: 0;
             transform: translateX(0);
@@ -188,9 +188,12 @@
             margin: 2px 0 0 10px;
         }
         #logo {
-            width: 50%;
-            height: 50%;
-            float: left;
+            width: 30%;
+            height: 35%;
+            min-width: 100px;
+            min-height: 100px;
+            margin-right: 10px;
+            float: center;
         }
         #bfpName{
             text-align: left;

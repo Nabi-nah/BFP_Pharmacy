@@ -159,7 +159,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 0 30px;
+            padding: 0 70px;
             text-align: center;
             top: 0;
             transform: translateX(0);
@@ -196,9 +196,12 @@
             margin: 2px 0 0 10px;
         }
         #logo {
-            width: 50%;
-            height: 50%;
-            float: left;
+            width: 25%;
+            height: 19%;
+            min-width: 100px;
+            min-height: 50px;
+            margin-right: 10px;
+            float: center;
         }
         #bfpName{
             text-align: left;
@@ -234,14 +237,16 @@
                     <button class="hidden" id="login">Sign In</button>
                 </div-->
                 <div class="toggle-panel toggle-right">
-                    <div class = "grid-container">
-                        <div class = "grid-item">
+                    <table class ="right" style="width:100%; float:left;">
+                        <td>
                             <img src="{{ asset('bfp.png') }}" alt="bfp-logo" id = "logo" >
-                        </div>
-                        <div padding = "10px;" class = "grid-item">
-                            <h2 id = "bfpName" >Bureau of <br> Fire  Protection</h2>
-                        </div>
+                        </td>
+                        <td>
+                            <div id = "bfpName" style="font-size:24; font-weight:bold; color:#FAF5F5;">Bureau of <br> Fire Protection</div>
+                        </td>
                     </div>
+                    </table>
+                    
                     
                     <p><br>“Save lives and Properties.”</p>
                     <p float = "bottom">Est. 1991</p>
