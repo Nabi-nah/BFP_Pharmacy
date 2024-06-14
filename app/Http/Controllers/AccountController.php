@@ -84,9 +84,17 @@ class AccountController extends Controller
 
             Account::where('id', '=', $id)->update([
                 'email' => $email,
-                'password' => $password
+                'password' => Hash::make($request->password)
             ]);
         }
+        if ($request->password) {
+            auth()->user()->update(['password' => Hash::make($request->password)]);
+        }
+
+        auth()->user()->update([
+            'email' => $request->email,
+        ]);
+
         return redirect()->route('profile');
     }
 

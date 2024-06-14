@@ -85,7 +85,9 @@ class ImportController extends Controller
                     } else {
                         $medicines->$field = $row[$request->fields[$index]];
                     }
+                    
                 }
+                //$medicine->region = Session::get('loginId');
                 $medicines->save();
             }
 

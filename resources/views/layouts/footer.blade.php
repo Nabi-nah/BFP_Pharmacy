@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100" >
     <!-- Primary Navigation Menu -->
-    <div style = "background-color: #796D67; position:relative; width: 100%; height:80">
+    <div style = "background-color: #524752; position:relative; width: 100%; height:80">
     <!--x-header-background-->
         <div class="px-10 mx-auto max-w-10xl sm:px-10 lg:px-10 h:10">
         

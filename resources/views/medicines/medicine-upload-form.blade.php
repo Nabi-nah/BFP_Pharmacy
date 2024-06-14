@@ -26,39 +26,39 @@
                             <x-input id="header" class="ml-1" type="checkbox" name="header" checked/>
                         </div>
 
-                        <x-button class="mt-4">
+                        <x-import-button class="mt-4">
                             {{ __('Submit') }}
-                        </x-button>
+                        </x-import-button>
                     </form>
 
                     <div class="overflow-hidden overflow-x-auto min-w-full align-middle sm:rounded-md">
                         <table class="min-w-full divide-y divide-gray-200 border">
                             <thead>
                             <tr>
-                                <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Medicine Name</span>
+                                <th class="px-6 py-4" style ="background-color:#CECAE1; font-color:white;">
+                                    <span class="text-left text-sm leading-4 font-medium uppercase tracking-wider">Medicine Name</span>
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Quantity</span>
+                                <th class="px-6 py-4" style ="background-color:#CECAE1; font-color:white;">
+                                    <span class="text-left text-sm leading-4 font-medium  uppercase tracking-wider">Quantity</span>
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Name</span>
+                                <th class="px-6 py-4" style ="background-color:#CECAE1; font-color:white;">
+                                    <span class="text-left text-sm leading-4 font-medium  uppercase tracking-wider">Patient Name</span>
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Patient Type</span>
+                                <th class="px-6 py-4" style ="background-color:#CECAE1; font-color:white;">
+                                    <span class="text-left text-sm leading-4 font-medium  uppercase tracking-wider">Patient Type</span>
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Prescription Date</span>
+                                <th class="px-6 py-4" style ="background-color:#CECAE1; font-color:white;">
+                                    <span class="text-left text-sm leading-4 font-medium uppercase tracking-wider">Prescription Date</span>
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50">
-                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Physician Name</span>
+                                <th class="px-6 py-4" style ="background-color:#CECAE1; font-color:white;">
+                                    <span class="text-left text-sm leading-4 font-medium uppercase tracking-wider">Physician Name</span>
                                 </th>
                             </tr>
                             </thead>
 
                             <tbody class="bg-white divide-y divide-gray-200 divide-solid">
                             @foreach($medicines as $medicine)
-                                <tr class="bg-white">
+                            <tr class="bg-white" style="text-align:center; background-color: #FAFAFF;">
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                         {{ $medicine->medicine_name }}
                                     </td>

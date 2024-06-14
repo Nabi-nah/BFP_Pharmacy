@@ -21,6 +21,7 @@ class CreateMedicinesTable extends Migration
             $table->string('patient_type');
             $table->date('prescription_date');
             $table->string('physician_name');
+            $table->integer('region');
             $table->timestamps();
         });
     }
